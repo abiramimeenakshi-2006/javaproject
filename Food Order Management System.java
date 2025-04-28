@@ -82,7 +82,7 @@ public class FoodOrderManagementSystem1 {
             System.out.println("\n1. Add Menu Item\n2. View Menu\n3. Update Menu Item\n4. Delete Menu Item\n5. Save & Exit");
             System.out.print("Enter choice: ");
             int ch = sc.nextInt();
-            sc.nextLine(); // Consume leftover newline
+            sc.nextLine(); 
             if (ch == 1) {
                 System.out.print("ID: ");
                 int id = sc.nextInt();
