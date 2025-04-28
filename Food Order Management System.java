@@ -14,6 +14,7 @@ class MenuItem {
         this.category = category;
     }
 }
+
 class MenuManager {
     List<MenuItem> menu = new ArrayList<>();
 
@@ -69,5 +70,57 @@ class MenuManager {
         }
         writer.close();
         System.out.println("Menu saved.");
+    }
+}
+
+public class FoodOrderManagementSystem1 {
+    public static void main(String[] args) throws IOException {
+        Scanner sc = new Scanner(System.in);
+        MenuManager menuManager = new MenuManager();
+
+        while (true) {
+            System.out.println("\n1. Add Menu Item\n2. View Menu\n3. Update Menu Item\n4. Delete Menu Item\n5. Save & Exit");
+            System.out.print("Enter choice: ");
+            int ch = sc.nextInt();
+            sc.nextLine(); // Consume leftover newline
+            if (ch == 1) {
+                System.out.print("ID: ");
+                int id = sc.nextInt();
+                sc.nextLine();
+                System.out.print("Name: ");
+                String name = sc.nextLine();
+                System.out.print("Price: ");
+                double price = sc.nextDouble();
+                sc.nextLine();
+                System.out.print("Category: ");
+                String category = sc.nextLine();
+                menuManager.addItem(id, name, price, category);
+            } else if (ch == 2) {
+                menuManager.display();
+            } else if (ch == 3) {
+                System.out.print("ID to update: ");
+                int id = sc.nextInt();
+                sc.nextLine();
+                System.out.print("New Name: ");
+                String name = sc.nextLine();
+                System.out.print("New Price: ");
+                double price = sc.nextDouble();
+                sc.nextLine();
+                System.out.print("New Category: ");
+                String category = sc.nextLine();
+                menuManager.updateItem(id, name, price, category);
+            } else if (ch == 4) {
+                System.out.print("ID to delete: ");
+                int id = sc.nextInt();
+                menuManager.deleteItem(id);
+            } else if (ch == 5) {
+                menuManager.saveMenu();
+                System.out.println("Exiting...");
+                break;
+            } else {
+                System.out.println("Invalid choice. Try again.");
+            }
+        }
+        sc.close();
     }
 }
